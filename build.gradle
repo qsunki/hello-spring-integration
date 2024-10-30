@@ -1,7 +1,8 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.3.2'
+    id 'org.springframework.boot' version '3.3.5'
     id 'io.spring.dependency-management' version '1.1.6'
+    id "com.diffplug.spotless" version "6.25.0"
 }
 
 group = 'com.example'
@@ -9,7 +10,7 @@ version = '0.0.1-SNAPSHOT'
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
@@ -25,11 +26,8 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-integration'
-    implementation 'org.springframework.integration:spring-integration-mqtt:6.3.2'
 
     compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.integration:spring-integration-test'
@@ -38,4 +36,19 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+    jvmArgs '-XX:+EnableDynamicAgentLoading'
+}
+
+spotless {
+    format 'misc', {
+        target '*.gradle'
+        trimTrailingWhitespace()
+        indentWithSpaces(4)
+        endWithNewline()
+    }
+    java {
+        removeUnusedImports()
+        googleJavaFormat().aosp().reflowLongStrings().skipJavadocFormatting()
+        formatAnnotations()
+    }
 }
