@@ -1,0 +1,6 @@
+spring:
+  application:
+    name:
+      hello-spring-integration
+  main:
+    keep-alive: true

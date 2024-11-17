@@ -1,1 +1,5 @@
 rootProject.name = 'hello-spring-integration'
+
+include 'internal'
+include 'web'
+include 'message'

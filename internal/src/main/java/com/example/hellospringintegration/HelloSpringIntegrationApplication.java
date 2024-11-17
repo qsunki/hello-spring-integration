@@ -1,6 +1,6 @@
 package com.example.hellospringintegration;
 
-import java.io.IOException;
+import com.example.hellospringintegration.dto.MyMessage;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.integration.annotation.IntegrationComponentScan;
@@ -9,10 +9,9 @@ import org.springframework.integration.annotation.IntegrationComponentScan;
 @IntegrationComponentScan
 public class HelloSpringIntegrationApplication {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
+        MyMessage message = new MyMessage(1L, "Hello, World!");
+        System.out.println(message);
         SpringApplication.run(HelloSpringIntegrationApplication.class, args);
-        // for remaining running state
-        //noinspection ResultOfMethodCallIgnored
-        System.in.read();
     }
 }
