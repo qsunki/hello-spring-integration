@@ -1,3 +1,6 @@
 dependencies {
     implementation project(':message')
+    implementation "org.springframework.integration:spring-integration-http"
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
 }
