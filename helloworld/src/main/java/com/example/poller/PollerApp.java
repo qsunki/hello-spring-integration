@@ -1,4 +1,4 @@
-package com.example;
+package com.example.poller;
 
 import org.springframework.boot.SpringApplication;
 

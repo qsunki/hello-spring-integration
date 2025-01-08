@@ -1,5 +1,6 @@
-package com.example;
+package com.example.poller;
 
+import java.util.concurrent.Executor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.annotation.InboundChannelAdapter;
@@ -10,8 +11,6 @@ import org.springframework.integration.config.EnableIntegration;
 import org.springframework.integration.handler.LoggingHandler;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
-
-import java.util.concurrent.Executor;
 
 @Configuration
 @EnableIntegration
