@@ -9,4 +9,5 @@ SPOTLESS_OUTPUT_FILE="spotless_check_output.txt"
 # spotlessCheck가 실패하면 커밋 중단
 if [ $? -ne 0 ]; then
   echo -e "\033[0;31mSpotless check failed. Aborting commit.\033[0m\nSee the details in $SPOTLESS_OUTPUT_FILE"
+  exit 1
 fi
